@@ -1,0 +1,21 @@
+@BaseUri = http://localhost:5263
+
+### Test1 -> Works
+POST {{BaseUri}}/api/TestApi/test1
+Content-Type: application/json
+
+### Test2 -> w/o params -> works
+GET {{BaseUri}}/api/TestApi/test2
+Content-Type: application/json
+
+### Test3 -> /w params -> fails
+GET {{BaseUri}}/api/TestApi/test3/5CD64E24-1636-4C04-AB8D-06B0F53A9CEA
+Content-Type: application/json
+
+### Test4 -> minimal api w/ params -> works
+GET {{BaseUri}}/api/TestApi/test4/5CD64E24-1636-4C04-AB8D-06B0F53A9CEA
+Content-Type: application/json
+
+### Test5 -> /w params but as query parameter -> fails
+GET {{BaseUri}}/api/TestApi/test5?id=5CD64E24-1636-4C04-AB8D-06B0F53A9CEA
+Content-Type: application/json
