@@ -1,22 +1,24 @@
-using System.Text.Json;
+using Cratis.Chronicle;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Issue #1 
+builder.Services.AddSingleton<IEventStoreNamespaceResolver>(new DefaultEventStoreNamespaceResolver());
+
 builder.AddCratisChronicle(options => options.EventStore = "Quickstart");
-builder.Services.AddControllers();
-
-// Apparently we need that
-builder.Services.AddSingleton(new JsonSerializerOptions(JsonSerializerDefaults.Web));
-
 var app = builder.Build();
 
-app.UseCratisChronicle();
-app.MapControllers();
 
-app.MapGet("api/TestApi/test4/{id:guid}", (Guid id) =>
-{
-    // Works
-    return Results.Ok("test5 " + id);
-});
+app.UseCratisChronicle();
+
+// Issue #2 when calling test/add endpoint
+app.MapPost(
+    "test/add",
+    () =>
+    {
+        // Works
+        return Results.Ok();
+    }
+);
 
 app.Run();

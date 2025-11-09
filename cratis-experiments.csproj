@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cratis.Chronicle" Version="14.2.6" />
-    <PackageReference Include="Cratis.Chronicle.AspNetCore" Version="14.2.6" />
+    <PackageReference Include="Cratis.Chronicle" Version="14.8.6" />
+    <PackageReference Include="Cratis.Chronicle.AspNetCore" Version="14.8.6" />
   </ItemGroup>
 
 </Project>
